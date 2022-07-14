@@ -11,4 +11,8 @@ import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.model.N
 abstract class NoteDatabase : RoomDatabase(){
 
     abstract val noteDao : NoteDao
+
+    companion object{
+        const val DATABASE_NAME = "notes_db"
+    }
 }
