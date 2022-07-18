@@ -13,13 +13,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.room.Delete
+import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.util.NoteOrder
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.notes.components.NoteItem
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.notes.components.OrderSection
+import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 @Composable
@@ -36,7 +39,9 @@ fun NoteScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
+                    navController.navigate(
+                        Screen.AddEditNoteScreen.route
+                    )
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
@@ -87,7 +92,9 @@ fun NoteScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-
+                                navController.navigate(
+                                    Screen.AddEditNoteScreen.route + "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
@@ -105,8 +112,12 @@ fun NoteScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                 }
             }
+
         }
+
+
     }
+
 }
 
 
