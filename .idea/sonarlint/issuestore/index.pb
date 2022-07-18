@@ -21,10 +21,6 @@ mapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/pr
 mapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/NotesEvent.kt,f\5\f5f4cbcbac3c3aef9e140068544307f590d4cfde
 ó
 gapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/domain/use_case/AddNote.kt,3\d\3d322406ff5014deff314f195cbf814df39d3b3d
-
-Oapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/di/AppModule.kt,2\0\206a307779deddec7b9906f9c0429edbc7761248
-ù
-mapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/domain/use_case/NotesUseCases.kt,e\e\ee2106dbaf6029342188cc99236a49bcbefe8852
 ë
 aapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/domain/model/Note.kt,e\a\eab6ba8a9e5e11ede649acb82c95e046340bdf09
 °

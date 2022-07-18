@@ -3,5 +3,6 @@ package com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.use_ca
 data class NotesUseCases(
     val getNotes: GetNotes,
     val deleteNote: DeleteNote,
-    val addNote: AddNote
+    val addNote: AddNote,
+    val getNote : GetNote
 )
