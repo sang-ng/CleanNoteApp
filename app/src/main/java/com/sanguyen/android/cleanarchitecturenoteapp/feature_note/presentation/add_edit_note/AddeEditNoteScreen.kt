@@ -49,6 +49,8 @@ fun AddEditNoteScreen(
     }
     val scope = rememberCoroutineScope()
 
+
+
     LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
             when (event) {
@@ -72,24 +74,23 @@ fun AddEditNoteScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Top App Bar") },
-                backgroundColor = DarkGray,
+                title = { },
+                backgroundColor = noteBackGroundAnimatable.value,
                 navigationIcon = {
                     IconButton(onClick = {
                         navController.navigateUp()
                     }) {
-                        Icon(Icons.Filled.ArrowBack, "backIcon")
+                        Icon(Icons.Filled.ArrowBack, "backIcon", tint = Color.White)
                     }
                 }, actions = {
                     IconButton(onClick = {
                         viewModel.onEvent(AddEditNoteEvent.DeleteNote(currentNote))
                     }) {
-                        Icon(Icons.Filled.Delete, "deleteIcon")
+                        Icon(Icons.Filled.Delete, "deleteIcon", tint = Color.White)
                     }
-                }
+                }, elevation = 0.dp
             )
         },
-
 
         floatingActionButton = {
             FloatingActionButton(
