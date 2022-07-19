@@ -63,8 +63,8 @@ fun NoteScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your note",
-                    style = MaterialTheme.typography.h4
+                    text = "My notes",
+                    style = MaterialTheme.typography.h5
                 )
                 IconButton(onClick = { viewModel.onEvent(NotesEvent.ToggleOrderSection) }) {
                     Icon(imageVector = Icons.Default.Sort, contentDescription = "Sort")

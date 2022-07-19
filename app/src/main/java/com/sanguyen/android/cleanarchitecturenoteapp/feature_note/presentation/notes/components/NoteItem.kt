@@ -4,6 +4,7 @@ import android.graphics.Paint
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -11,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -28,17 +30,16 @@ import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.model.N
 fun NoteItem(
     note: Note,
     modifier: Modifier = Modifier,
-    cornerRadius: Dp = 10.dp,
-    cutCornerSize: Dp = 30.dp,
     onDeleteClick: () -> Unit
 ) {
-    Box {
+    Box(modifier = modifier.clip(shape = RoundedCornerShape(5.dp))) {
         Row(
             modifier = modifier
                 .fillMaxWidth()
                 .background(Color(note.color))
                 .padding(16.dp),
-        ) {
+
+            ) {
             Column()
             {
                 Text(
