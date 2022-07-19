@@ -24,8 +24,6 @@ gapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/do
 }app/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/add_edit_note/NoteTextFieldState.kt,6\0\600cdf9d17624a4cb469305f184f17fa581a3b5b
 
 Oapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/di/AppModule.kt,2\0\206a307779deddec7b9906f9c0429edbc7761248
-¿
-Žapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/add_edit_note/components/TransparentHintTextField.kt,7\3\73bbcce91b87a448a0156550f8f8bab910402c0a
 z
 Japp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/NoteApp.kt,3\9\39960767bf67f3b1fcfb8a1a1eb8413b2794ab03
 ˜

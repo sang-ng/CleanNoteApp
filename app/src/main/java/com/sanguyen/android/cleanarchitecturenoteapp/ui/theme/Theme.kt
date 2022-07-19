@@ -14,6 +14,13 @@ private val DarkColorPalette = darkColors(
     onSurface = DarkGray
 )
 
+private val LightColorPalette = darkColors(
+    primary = DarkGray,
+    background = Color.White,
+    onBackground = DarkGray,
+    surface = LightBlue,
+    onSurface = DarkGray
+)
 
 @Composable
 fun CleanArchitectureNoteAppTheme(darkTheme: Boolean = true, content: @Composable() () -> Unit) {
