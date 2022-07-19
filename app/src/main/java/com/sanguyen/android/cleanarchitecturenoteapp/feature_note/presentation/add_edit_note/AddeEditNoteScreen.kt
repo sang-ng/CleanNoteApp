@@ -8,14 +8,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
-import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
@@ -25,11 +23,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.model.Note
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.add_edit_note.components.TransparentHintTextField
-import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.notes.NotesEvent
-import com.sanguyen.android.cleanarchitecturenoteapp.ui.theme.DarkGray
 import com.sanguyen.android.cleanarchitecturenoteapp.ui.theme.Orange
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Composable
 fun AddEditNoteScreen(
@@ -41,6 +39,7 @@ fun AddEditNoteScreen(
     val titleState = viewModel.noteTitle.value
     val contentState = viewModel.noteContent.value
     val currentNote = viewModel.currentNote.value
+    val createdNoteOn = viewModel.createdNoteOn.value
     val scaffoldState = rememberScaffoldState()
 
     val noteBackGroundAnimatable = remember {
@@ -111,7 +110,7 @@ fun AddEditNoteScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(noteBackGroundAnimatable.value)
-                .padding(16.dp)
+                .padding(24.dp)
         ) {
             Row(
                 modifier = Modifier
@@ -162,7 +161,6 @@ fun AddEditNoteScreen(
                     color = Color.Gray
                 )
             )
-
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
                 text = contentState.text,
@@ -177,8 +175,11 @@ fun AddEditNoteScreen(
                 textStyle = MaterialTheme.typography.body1.copy(
                     color = Color.Gray
                 ),
-                modifier = Modifier.fillMaxHeight()
             )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = createdNoteOn)
         }
     }
 }
+
+

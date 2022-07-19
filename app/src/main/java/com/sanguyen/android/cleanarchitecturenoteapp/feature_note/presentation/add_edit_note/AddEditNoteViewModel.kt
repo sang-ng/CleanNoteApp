@@ -1,5 +1,6 @@
 package com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.add_edit_note
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.toArgb
@@ -13,6 +14,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -45,8 +48,11 @@ class AddEditNoteViewModel @Inject constructor(
 
     private var _currentNoteId: Int? = null
 
-    private var _currentNote = mutableStateOf(Note("", "", 0,0))
+    private var _currentNote = mutableStateOf(Note("", "", 0, 0))
     var currentNote: State<Note> = _currentNote
+
+    private var _createdNoteOn = mutableStateOf("")
+    var createdNoteOn = _createdNoteOn
 
     init {
 
@@ -68,11 +74,18 @@ class AddEditNoteViewModel @Inject constructor(
 
                         _noteColor.value = note.color
 
-                       _currentNote.value = note
+                        _currentNote.value = note
+
+                        _createdNoteOn.value = "Created on " + getDate(note.timestamp)
                     }
                 }
             }
         }
+    }
+
+    private fun getDate(time: Long): String {
+        val simpleDate = SimpleDateFormat("dd/M/yyyy hh:mm:ss", Locale.GERMANY)
+        return simpleDate.format(time)
     }
 
     fun onEvent(event: AddEditNoteEvent) {
