@@ -121,13 +121,13 @@ fun AddEditNoteScreen(
                     val colorInt = color.toArgb()
                     Box(
                         modifier = Modifier
-                            .size(50.dp)
+                            .size(25.dp)
                             .shadow(15.dp, CircleShape)
                             .background(color)
                             .border(
                                 width = 3.dp,
                                 color = if (viewModel.noteColor.value == colorInt) {
-                                    Color.Black
+                                    Color.Gray
                                 } else Color.Transparent, shape = CircleShape
                             )
                             .clickable {
@@ -156,7 +156,9 @@ fun AddEditNoteScreen(
                 },
                 isHintVisible = titleState.isHintVisible,
                 singleLine = true,
-                textStyle = MaterialTheme.typography.h5
+                textStyle = MaterialTheme.typography.h5.copy(
+                    color = Color.Gray
+                )
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -170,7 +172,9 @@ fun AddEditNoteScreen(
                     viewModel.onEvent(AddEditNoteEvent.ChangeContentFocus(it))
                 },
                 isHintVisible = contentState.isHintVisible,
-                textStyle = MaterialTheme.typography.body1,
+                textStyle = MaterialTheme.typography.body1.copy(
+                    color = Color.Gray
+                ),
                 modifier = Modifier.fillMaxHeight()
             )
         }
