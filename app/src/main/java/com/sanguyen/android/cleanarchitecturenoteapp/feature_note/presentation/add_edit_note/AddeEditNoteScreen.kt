@@ -9,8 +9,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -24,6 +25,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.model.Note
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.add_edit_note.components.TransparentHintTextField
+import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.notes.NotesEvent
+import com.sanguyen.android.cleanarchitecturenoteapp.ui.theme.DarkGray
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -36,7 +39,7 @@ fun AddEditNoteScreen(
 
     val titleState = viewModel.noteTitle.value
     val contentState = viewModel.noteContent.value
-
+    val currentNote = viewModel.currentNote.value
     val scaffoldState = rememberScaffoldState()
 
     val noteBackGroundAnimatable = remember {
@@ -58,11 +61,36 @@ fun AddEditNoteScreen(
                 is AddEditNoteViewModel.UiEvent.SaveNote -> {
                     navController.navigateUp()
                 }
+
+                is AddEditNoteViewModel.UiEvent.DeleteNote -> {
+                    navController.navigateUp()
+                }
             }
         }
     }
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Top App Bar") },
+                backgroundColor = DarkGray,
+                navigationIcon = {
+                    IconButton(onClick = {
+                        navController.navigateUp()
+                    }) {
+                        Icon(Icons.Filled.ArrowBack, "backIcon")
+                    }
+                }, actions = {
+                    IconButton(onClick = {
+                        viewModel.onEvent(AddEditNoteEvent.DeleteNote(currentNote))
+                    }) {
+                        Icon(Icons.Filled.Delete, "deleteIcon")
+                    }
+                }
+            )
+        },
+
+
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {

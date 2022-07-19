@@ -6,7 +6,6 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.model.InvalidNoteException
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.model.Note
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.use_case.NotesUseCases
@@ -43,7 +42,11 @@ class AddEditNoteViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
-    private var currentNoteId: Int? = null
+
+    private var _currentNoteId: Int? = null
+
+    private var _currentNote = mutableStateOf(Note("", "", 0,0))
+    var currentNote: State<Note> = _currentNote
 
     init {
 
@@ -51,7 +54,8 @@ class AddEditNoteViewModel @Inject constructor(
             if (noteId != -1) {
                 viewModelScope.launch {
                     noteUseCases.getNote(noteId)?.also { note ->
-                        currentNoteId = note.id
+
+                        _currentNoteId = note.id
                         _noteTitle.value = noteTitle.value.copy(
                             text = note.title,
                             isHintVisible = false
@@ -63,6 +67,8 @@ class AddEditNoteViewModel @Inject constructor(
                         )
 
                         _noteColor.value = note.color
+
+                       _currentNote.value = note
                     }
                 }
             }
@@ -105,7 +111,7 @@ class AddEditNoteViewModel @Inject constructor(
                                 content = noteContent.value.text,
                                 timestamp = System.currentTimeMillis(),
                                 color = noteColor.value,
-                                id = currentNoteId
+                                id = _currentNoteId
                             )
                         )
                         _eventFlow.emit(UiEvent.SaveNote)
@@ -117,7 +123,12 @@ class AddEditNoteViewModel @Inject constructor(
                         )
                     }
                 }
-
+            }
+            is AddEditNoteEvent.DeleteNote -> {
+                viewModelScope.launch {
+                    noteUseCases.deleteNote(event.note)
+                    _eventFlow.emit(UiEvent.DeleteNote)
+                }
             }
         }
     }
@@ -125,7 +136,6 @@ class AddEditNoteViewModel @Inject constructor(
     sealed class UiEvent {
         data class ShowSnackbar(val message: String) : UiEvent()
         object SaveNote : UiEvent()
+        object DeleteNote : UiEvent()
     }
-
-
 }
