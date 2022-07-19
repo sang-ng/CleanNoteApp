@@ -86,7 +86,9 @@ fun AddEditNoteScreen(
                     IconButton(onClick = {
                         viewModel.onEvent(AddEditNoteEvent.DeleteNote(currentNote))
                     }) {
-                        Icon(Icons.Filled.Delete, "deleteIcon", tint = Color.White)
+                        if (currentNote.title.isNotBlank()) {
+                            Icon(Icons.Filled.Delete, "deleteIcon", tint = Color.White)
+                        }
                     }
                 }, elevation = 0.dp
             )
@@ -100,6 +102,7 @@ fun AddEditNoteScreen(
                 backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(imageVector = Icons.Default.Save, contentDescription = "Save note")
+
             }
         },
         scaffoldState = scaffoldState
