@@ -4,6 +4,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
     primary = Color.White,
@@ -13,6 +14,7 @@ private val DarkColorPalette = darkColors(
     onSurface = DarkGray
 )
 
+
 @Composable
 fun CleanArchitectureNoteAppTheme(darkTheme: Boolean = true, content: @Composable() () -> Unit) {
     MaterialTheme(
@@ -21,4 +23,15 @@ fun CleanArchitectureNoteAppTheme(darkTheme: Boolean = true, content: @Composabl
         shapes = Shapes,
         content = content
     )
+
+    val systemUiController = rememberSystemUiController()
+    if (darkTheme) {
+        systemUiController.setSystemBarsColor(
+            color = DarkGray
+        )
+    } else {
+        systemUiController.setSystemBarsColor(
+            color = Color.White
+        )
+    }
 }
