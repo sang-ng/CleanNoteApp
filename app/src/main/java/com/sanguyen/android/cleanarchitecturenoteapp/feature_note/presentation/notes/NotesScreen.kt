@@ -8,11 +8,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -20,6 +23,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.room.Delete
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.util.NoteOrder
+import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.add_edit_note.AddEditNoteEvent
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.notes.components.NoteItem
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.notes.components.OrderSection
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.util.Screen
@@ -36,6 +40,18 @@ fun NoteScreen(
     val scope = rememberCoroutineScope()
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("My Notes") },
+                backgroundColor = MaterialTheme.colors.primary,
+                contentColor = MaterialTheme.colors.onPrimary,
+                 actions = {
+                     IconButton(onClick = { viewModel.onEvent(NotesEvent.ToggleOrderSection) }) {
+                         Icon(imageVector = Icons.Default.Sort, contentDescription = "Sort")
+                     }
+                }, elevation = 4.dp
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
@@ -43,7 +59,6 @@ fun NoteScreen(
                         Screen.AddEditNoteScreen.route
                     )
                 },
-                backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
             }
@@ -57,19 +72,6 @@ fun NoteScreen(
                 .padding(16.dp)
                 .fillMaxSize()
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "My notes",
-                    style = MaterialTheme.typography.h5
-                )
-                IconButton(onClick = { viewModel.onEvent(NotesEvent.ToggleOrderSection) }) {
-                    Icon(imageVector = Icons.Default.Sort, contentDescription = "Sort")
-                }
-            }
             AnimatedVisibility(
                 visible = state.isOrderSectionVisible,
                 enter = fadeIn() + slideInVertically(),

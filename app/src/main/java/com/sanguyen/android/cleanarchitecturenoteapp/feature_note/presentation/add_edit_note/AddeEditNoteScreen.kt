@@ -10,10 +10,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
@@ -21,6 +18,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.model.Note
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.add_edit_note.components.TransparentHintTextField
 import com.sanguyen.android.cleanarchitecturenoteapp.ui.theme.Orange
@@ -70,6 +68,7 @@ fun AddEditNoteScreen(
             }
         }
     }
+
 
     Scaffold(
         topBar = {
@@ -128,7 +127,7 @@ fun AddEditNoteScreen(
                             .border(
                                 width = 3.dp,
                                 color = if (viewModel.noteColor.value == colorInt) {
-                                    Color.Gray
+                                    Color.White
                                 } else Color.Transparent, shape = CircleShape
                             )
                             .clickable {
@@ -158,7 +157,7 @@ fun AddEditNoteScreen(
                 isHintVisible = titleState.isHintVisible,
                 singleLine = true,
                 textStyle = MaterialTheme.typography.h5.copy(
-                    color = Color.Gray
+                    color = Color.White
                 )
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -173,11 +172,15 @@ fun AddEditNoteScreen(
                 },
                 isHintVisible = contentState.isHintVisible,
                 textStyle = MaterialTheme.typography.body1.copy(
-                    color = Color.Gray
-                ),
+                    color = Color.White
+                )
             )
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = createdNoteOn)
+            Text(
+                text = createdNoteOn, style = MaterialTheme.typography.body2.copy(
+                    color = Color.White
+                )
+            )
         }
     }
 }

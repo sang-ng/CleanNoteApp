@@ -1,11 +1,15 @@
 package com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.notes.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.util.NoteOrder
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.util.OrderType
+import com.sanguyen.android.cleanarchitecturenoteapp.ui.theme.Orange
 
 @Composable
 fun OrderSection(

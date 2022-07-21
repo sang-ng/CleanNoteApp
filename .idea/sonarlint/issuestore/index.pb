@@ -11,8 +11,6 @@ eapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/do
 gapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/domain/use_case/AddNote.kt,3\d\3d322406ff5014deff314f195cbf814df39d3b3d
 ±
 €app/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/components/DefaultRadioButton.kt,0\e\0e60ba2e6d3346d5d5f212c8325dce203470778d
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 •
 eapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/domain/util/NoteOrder.kt,9\1\91bc2346999bc3c648c93b88ab0795fb86b1bdcf
 :
@@ -28,3 +26,17 @@ z
 Japp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/NoteApp.kt,3\9\39960767bf67f3b1fcfb8a1a1eb8413b2794ab03
 ˜
 happ/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/util/Screen.kt,2\b\2bcad16da0501daaf39d8432948faf134435480c
+€
+Papp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/ui/theme/Type.kt,6\4\64b55813f189c110ec00e254b3a68e47b1a54790
+
+mapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/NotesState.kt,f\8\f869ec0bab166b6bb1c16de94b8329b8f62edbf3
+ 
+papp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/domain/repository/NoteRepository.kt,d\7\d73a3e93234fbe99bf1a672b826efe2ff2906507
+š
+japp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/domain/use_case/DeleteNote.kt,5\b\5b98d98a82a432fc31d07e373e39499ef3ffb1e7
+
+mapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/domain/use_case/NotesUseCases.kt,e\e\ee2106dbaf6029342188cc99236a49bcbefe8852
+
+mapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/NotesEvent.kt,f\5\f5f4cbcbac3c3aef9e140068544307f590d4cfde
+¡
+qapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/NotesViewModel.kt,2\4\24be3b57ceb99a2cd636ae11f84970f54a8eb98e
