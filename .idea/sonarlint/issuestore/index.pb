@@ -26,8 +26,6 @@ z
 Japp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/NoteApp.kt,3\9\39960767bf67f3b1fcfb8a1a1eb8413b2794ab03
 ò
 happ/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/util/Screen.kt,2\b\2bcad16da0501daaf39d8432948faf134435480c
-Ä
-Papp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/ui/theme/Type.kt,6\4\64b55813f189c110ec00e254b3a68e47b1a54790
 ù
 mapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/NotesState.kt,f\8\f869ec0bab166b6bb1c16de94b8329b8f62edbf3
 †
