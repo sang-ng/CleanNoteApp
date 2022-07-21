@@ -10,6 +10,7 @@ data class Note(
     val content: String,
     val timestamp: Long,
     val color: Int,
+    val isHighlighted: Boolean,
     @PrimaryKey val id: Int? = null
 ) {
 

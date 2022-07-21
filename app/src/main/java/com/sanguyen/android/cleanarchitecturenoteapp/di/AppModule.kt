@@ -6,6 +6,7 @@ import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.data.data_sour
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.data.repository.NoteRepositoryImp
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.repository.NoteRepository
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.use_case.*
+import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.add_edit_note.AddEditNoteEvent
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

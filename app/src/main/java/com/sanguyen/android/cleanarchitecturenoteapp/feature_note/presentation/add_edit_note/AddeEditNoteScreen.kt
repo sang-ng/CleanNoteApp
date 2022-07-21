@@ -1,6 +1,8 @@
 package com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.add_edit_note
 
 import android.graphics.Paint
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Icon
 import android.renderscript.RenderScript
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
@@ -27,11 +29,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.domain.model.Note
+import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.add_edit_note.components.HighlightButton
 import com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.add_edit_note.components.TransparentHintTextField
 import com.sanguyen.android.cleanarchitecturenoteapp.ui.theme.Orange
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.intellij.lang.annotations.JdkConstants
+import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -50,6 +54,7 @@ fun AddEditNoteScreen(
     val currentNote = viewModel.currentNote.value
     val createdNoteOn = viewModel.createdNoteOn.value
     val scaffoldState = rememberScaffoldState()
+    var noteIsHighlighted = viewModel.noteIsHighlighted.value
 
     val noteBackGroundAnimatable = remember {
         Animatable(
@@ -192,6 +197,13 @@ fun AddEditNoteScreen(
                     )
                 }
             }
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(text = "Highlighted", fontSize = 12.sp)
+            Checkbox(
+                checked = viewModel.noteIsHighlighted.value,
+                onCheckedChange = { viewModel.noteIsHighlighted.value = it }
+            )
             Spacer(modifier = Modifier.height(64.dp))
             Row(
                 horizontalArrangement = Arrangement.End,
@@ -201,11 +213,9 @@ fun AddEditNoteScreen(
                     text = createdNoteOn, style = MaterialTheme.typography.body2.copy(
                         color = Color.White,
                         fontStyle = FontStyle.Italic
-
                     )
                 )
             }
-
         }
     }
 }

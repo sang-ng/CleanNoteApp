@@ -14,6 +14,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import java.lang.Boolean
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -48,11 +49,14 @@ class AddEditNoteViewModel @Inject constructor(
 
     private var _currentNoteId: Int? = null
 
-    private var _currentNote = mutableStateOf(Note("", "", 0, 0))
+    private var _currentNote = mutableStateOf(Note("", "", 0, 0, false))
     var currentNote: State<Note> = _currentNote
 
     private var _createdNoteOn = mutableStateOf("")
     var createdNoteOn = _createdNoteOn
+
+    private var _noteIsHighlighted = mutableStateOf(false)
+    var noteIsHighlighted  = _noteIsHighlighted
 
     init {
 
@@ -77,6 +81,8 @@ class AddEditNoteViewModel @Inject constructor(
                         _currentNote.value = note
 
                         _createdNoteOn.value = "Created on " + getDate(note.timestamp)
+
+                        _noteIsHighlighted.value = note.isHighlighted
                     }
                 }
             }
@@ -124,6 +130,7 @@ class AddEditNoteViewModel @Inject constructor(
                                 content = noteContent.value.text,
                                 timestamp = System.currentTimeMillis(),
                                 color = noteColor.value,
+                                isHighlighted = noteIsHighlighted.value,
                                 id = _currentNoteId
                             )
                         )
@@ -142,6 +149,10 @@ class AddEditNoteViewModel @Inject constructor(
                     noteUseCases.deleteNote(event.note)
                     _eventFlow.emit(UiEvent.DeleteNote)
                 }
+            }
+
+            is AddEditNoteEvent.HighlightNote -> {
+                _noteIsHighlighted.value = event.isHighlighted
             }
         }
     }
