@@ -35,7 +35,7 @@ fun TransparentHintTextField(
                 onValueChange = onValueChange,
                 singleLine = singleLine,
                 textStyle = textStyle,
-                maxLines = 10,
+                maxLines = 6,
                 modifier = Modifier
                     .fillMaxWidth()
                     .onFocusChanged {

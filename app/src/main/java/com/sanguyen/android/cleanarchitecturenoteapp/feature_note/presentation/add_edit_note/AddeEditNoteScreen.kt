@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -139,7 +140,7 @@ fun AddEditNoteScreen(
                     color = Color.White
                 )
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(24.dp))
             TransparentHintTextField(
                 label = "Content",
                 text = contentState.text,
@@ -155,7 +156,9 @@ fun AddEditNoteScreen(
                     color = Color.White
                 )
             )
-            Text(text = "Priority")
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(text = "Priority", fontSize = 12.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Row(
                 modifier = Modifier
