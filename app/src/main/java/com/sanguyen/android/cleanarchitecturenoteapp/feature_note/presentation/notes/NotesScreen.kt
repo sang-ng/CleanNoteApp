@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
@@ -64,7 +65,18 @@ fun NoteScreen(
             }
 
         },
-        scaffoldState = scaffoldState
+        scaffoldState = scaffoldState,
+        snackbarHost = {
+            // reuse default SnackbarHost to have default animation and timing handling
+            SnackbarHost(it) { data ->
+                // custom snackbar with the custom colors
+                Snackbar(
+                    backgroundColor = Color.DarkGray,
+                    contentColor = Color.White,
+                    snackbarData = data
+                )
+            }
+        },
 
     ) {
         Column(

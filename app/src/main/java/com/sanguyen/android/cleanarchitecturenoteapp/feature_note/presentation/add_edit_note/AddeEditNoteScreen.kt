@@ -19,6 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Green
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontStyle
@@ -54,7 +56,6 @@ fun AddEditNoteScreen(
     val currentNote = viewModel.currentNote.value
     val createdNoteOn = viewModel.createdNoteOn.value
     val scaffoldState = rememberScaffoldState()
-    var noteIsHighlighted = viewModel.noteIsHighlighted.value
 
     val noteBackGroundAnimatable = remember {
         Animatable(
@@ -119,7 +120,18 @@ fun AddEditNoteScreen(
                 Icon(imageVector = Icons.Default.Check, contentDescription = "Save note")
             }
         },
-        scaffoldState = scaffoldState
+        scaffoldState = scaffoldState,
+        snackbarHost = {
+            // reuse default SnackbarHost to have default animation and timing handling
+            SnackbarHost(it) { data ->
+                // custom snackbar with the custom colors
+                Snackbar(
+                    backgroundColor = Color.DarkGray,
+                    contentColor = Color.White,
+                    snackbarData = data
+                )
+            }
+        },
     ) {
         Column(
             modifier = Modifier
