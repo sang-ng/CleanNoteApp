@@ -30,10 +30,6 @@ mapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/pr
 Oapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/MainActivity.kt,c\4\c49a6a6b54b9ca5c4ce996045f1f774c7d75aa5d
 Å
 Qapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/ui/theme/Color.kt,8\7\87f1e6def452d8eced783dcb0e576bdbc7100316
-¶
-vapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/components/NoteItem.kt,2\9\29a3a98596dbad1f1c8dd1ba8575c3b92c26c37b
-Å
-Qapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/ui/theme/Theme.kt,e\d\edabd8c7d063e333ecfb63d49425e54751cdd0a0
 Ä
 Papp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/ui/theme/Type.kt,6\4\64b55813f189c110ec00e254b3a68e47b1a54790
 ó
@@ -52,8 +48,6 @@ Oapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/di/AppModule.kt
 zapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/components/OrderSection.kt,9\f\9f582f91e8df3a3dab34568c8e3d87e4b0c327d9
 ò
 happ/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/data/data_source/NoteDao.kt,c\4\c4002f8d83ec94cdafbb470642e68fe8057042fc
-û
-napp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/NotesScreen.kt,2\a\2af6fb4e12a59eccea48c6fb59bfbf509c45cab1
 °
 qapp/src/main/java/com/sanguyen/android/cleanarchitecturenoteapp/feature_note/presentation/notes/NotesViewModel.kt,2\4\24be3b57ceb99a2cd636ae11f84970f54a8eb98e
 ∂

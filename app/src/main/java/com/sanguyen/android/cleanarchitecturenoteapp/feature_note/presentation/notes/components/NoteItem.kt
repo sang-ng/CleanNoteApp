@@ -3,6 +3,7 @@ package com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.
 import android.graphics.Paint
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -32,7 +33,16 @@ fun NoteItem(
     modifier: Modifier = Modifier,
     onDeleteClick: () -> Unit
 ) {
-    Box(modifier = modifier.clip(shape = RoundedCornerShape(5.dp))) {
+    Box(
+        modifier = modifier
+            .clip(shape = RoundedCornerShape(5.dp))
+            .border(
+                width = 2.dp,
+                color = if (note.isHighlighted) {
+                    Color.White
+                } else Color.Transparent
+            )
+    ) {
         Row(
             modifier = modifier
                 .fillMaxWidth()
