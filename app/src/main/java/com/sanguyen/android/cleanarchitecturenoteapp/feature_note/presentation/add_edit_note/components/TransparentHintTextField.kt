@@ -3,6 +3,7 @@ package com.sanguyen.android.cleanarchitecturenoteapp.feature_note.presentation.
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -38,9 +39,11 @@ fun TransparentHintTextField(
                 maxLines = 6,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(horizontal = 12.dp)
                     .onFocusChanged {
                         onFocusChange(it)
                     },
+
 
                 )
             if (isHintVisible) {

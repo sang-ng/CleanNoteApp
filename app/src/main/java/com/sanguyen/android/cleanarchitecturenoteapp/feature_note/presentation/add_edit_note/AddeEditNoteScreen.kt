@@ -167,7 +167,9 @@ fun AddEditNoteScreen(
             Spacer(modifier = Modifier.height(8.dp))
             Row(
                 modifier = Modifier
-                    .width(screenWidth * 0.4F),
+                    .width(screenWidth * 0.4F)
+                    .padding(horizontal = 12.dp),
+
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Note.noteColors.forEach { color ->
@@ -200,10 +202,13 @@ fun AddEditNoteScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(text = "Highlighted", fontSize = 12.sp)
+
             Checkbox(
+                modifier = Modifier.padding(0.dp),
                 checked = viewModel.noteIsHighlighted.value,
                 onCheckedChange = { viewModel.noteIsHighlighted.value = it }
             )
+
             Spacer(modifier = Modifier.height(64.dp))
             Row(
                 horizontalArrangement = Arrangement.End,
